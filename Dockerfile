@@ -17,12 +17,14 @@ RUN apt-get update && apt-get install -y \
     unzip \
     htop \
     net-tools \
+    dnsutils \
     tree \
     tmux \
     fzf  \
     vim  \
     tmux \
-    ruby
+    ruby \
+    golang
 
 # Basic vim setup
 RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
