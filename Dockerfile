@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
     htop \
     net-tools \
     dnsutils \
+    inetutils-ping \
+    telnet \
     tree \
     tmux \
     fzf  \
