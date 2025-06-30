@@ -26,7 +26,8 @@ RUN apt-get update && apt-get install -y \
     vim  \
     tmux \
     ruby \
-    golang
+    golang \
+    postgresql-client
 
 # Basic vim setup
 RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
@@ -49,8 +50,14 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/h
 RUN apt-get update && apt-get install -y \
     kubectl \
     helm
+
+RUN wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_arm64.deb \ 
+    && apt install ./k9s_linux_arm64.deb \ 
+    && rm k9s_linux_arm64.deb
     
 # Install uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 # Install Tailscale
 RUN curl -fsSL https://tailscale.com/install.sh | sh
+
+SHELL ["/bin/bash", "-c"]
